@@ -94,3 +94,7 @@ def get_commit_files(sha: str):
 @app.get("/commit/{sha}/stats")
 def get_commit_stats(sha: str):
     return commit_stats(sha)
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 8080))   # CE injects PORT=8080
+    app.run(host="0.0.0.0", port=port)
