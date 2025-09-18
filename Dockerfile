@@ -1,16 +1,17 @@
-FROM python:3.11-slim
+# Use a lightweight Python base image
+FROM python:3.12-slim
 
+# Set the working directory inside the container
 WORKDIR /app
 
-# Copy requirements and install
+# Copy the requirements file into the container
 COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy the rest of your application code
 COPY . .
 
-# Expose the port CE will inject
-EXPOSE 8080
-
-# Start FastAPI with Uvicorn
-CMD ["uvicorn", "github_insights_app:app", "--host", "0.0.0.0", "--port", "8080"]
+# Specify the command to run your FastAPI application with Uvicorn
+CMD ["uvicorn", "github_insights_app:app", "--host", "0.0.0.0", "--port", "8000"]
