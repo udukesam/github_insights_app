@@ -21,6 +21,6 @@ def health_check():
 if __name__ == "__main__":
     import uvicorn
     # Use the PORT environment variable provided by Code Engine
-    port = int(os.environ.get("PORT", 8000))
+    port = int(os.environ.get("PORT", 8080))
     # Bind to 0.0.0.0 to be accessible from outside the container
-    uvicorn.run("github_insights_app:app", host="0.0.0.0", port=port, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=port, reload=True)
